@@ -1,61 +1,25 @@
 <html>
-<head><title>Tweet Button Options</title></head>
-<script type="text/javascript">
+  <head>
+    <title>Tweet Button Options</title>
+    <script src="options.js"></script>
+  </head>
 
-// Saves options to localStorage.
-function save_options() {
-  var check = document.getElementById("no_count")
-  if (check.checked) {
-  	localStorage["tweet_nocount"] = 1;
-  } else {
-  	localStorage["tweet_nocount"] = 0;
-  }
+  <body>
 
-  var via = document.getElementById("no_via")
-  if (via.checked) {
-  	localStorage["tweet_novia"] = 1;
-  } else {
-  	localStorage["tweet_novia"] = 0;
-  }
+    <div>
+      <p>
+        <input id="no_count" type="checkbox" value="1">
+        <label>Disable Tweet Count (check box to hide tweet count)</label>
+      </p>
+      <p>
+        <input id="no_via" type="checkbox" value="1">
+        <label>Disable Via Check (makes button faster if checked)</label>
+      </p>
+      <p>
+        <button id="save">Save</button>
+      </p>
+    </div>
 
-  // Update status to let user know options were saved.
-  var status = document.getElementById("status");
-  status.innerHTML = "Options Saved.";
-  setTimeout(function() {
-    status.innerHTML = "";
-  }, 750);
-}
-
-// Restores select box state to saved value from localStorage.
-function restore_options() {
-  var noCount = localStorage["tweet_nocount"];
-  var noVia = localStorage["tweet_novia"];
-  if (noCount == 1) {
-    var check = document.getElementById("no_count").checked = true;
-  }
-  if (noVia == 1) {
-    var via = document.getElementById("no_via").checked = true;
-  }
-
-}
-
-</script>
-
-<body onload="restore_options()">
-
-<div>
-Disable Tweet Count (check box to hide tweet count):
-<input id="no_count" type="checkbox" value="1">
-<br>
-<br>
-Disable Via Check (makes button faster if checked):
-<input id="no_via" type="checkbox" value="1">
-
-<button onclick="save_options()">Save</button>
-<br>
-<br>
-</div>
-
-<div id="status">&nbsp;</div>
-</body>
+    <div id="status"></div>
+  </body>
 </html>
